@@ -12,5 +12,9 @@
     <vm:MainViewModel />
   </Design.DataContext>
 
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+  <Grid>
+    <ComboBox Name="versionsList" HorizontalAlignment="Left" Margin="315,148,0,0" VerticalAlignment="Top" Width="130" PlaceholderText="选择MC版本"/>
+    <ComboBox Name="javaList" HorizontalAlignment="Left" Margin="460,148,0,0" VerticalAlignment="Top" Width="140" PlaceholderText="选择JAVA版本"/>
+    <Button Name="Run"  HorizontalAlignment="Left" Margin="610,148,0,0" VerticalAlignment="Top" Click="start">启动</Button>
+  </Grid>
 </UserControl>
