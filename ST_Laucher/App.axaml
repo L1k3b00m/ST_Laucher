@@ -6,5 +6,6 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="avares://ST_Laucher/icon.axaml" />
     </Application.Styles>
 </Application>

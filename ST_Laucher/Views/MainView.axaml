@@ -5,16 +5,18 @@
              xmlns:vm="clr-namespace:ST_Laucher.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ST_Laucher.Views.MainView"
-             x:DataType="vm:MainViewModel">
+             x:DataType="vm:MainViewModel"
+             >
+  
   <Design.DataContext>
     <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:MainViewModel />
   </Design.DataContext>
-
+  
   <Grid>
-    <ComboBox Name="versionsList" HorizontalAlignment="Left" Margin="315,148,0,0" VerticalAlignment="Top" Width="130" PlaceholderText="选择MC版本"/>
+    <ComboBox Name="versionsList" HorizontalAlignment="Left" Margin="315,148,0,0" VerticalAlignment="Top" Width="130" PlaceholderText="选择MC版本" DisplayMemberBinding="{Binding Id}"/>
     <ComboBox Name="javaList" HorizontalAlignment="Left" Margin="460,148,0,0" VerticalAlignment="Top" Width="140" PlaceholderText="选择JAVA版本"/>
-    <Button Name="Run"  HorizontalAlignment="Left" Margin="610,148,0,0" VerticalAlignment="Top" Click="start">启动</Button>
+    <Button Name="Run"  HorizontalAlignment="Left" Margin="610,148,0,0" VerticalAlignment="Top" Click="start"><PathIcon Data="{StaticResource power_regular}"/></Button>
   </Grid>
 </UserControl>

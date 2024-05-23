@@ -7,6 +7,11 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ST_Laucher.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="ST_Laucher">
+        Title="ST_Laucher"
+        RequestedThemeVariant=""
+        Background="Transparent"
+        TransparencyLevelHint="AcrylicBlur"
+        ExtendClientAreaToDecorationsHint="True">
         <views:MainView />
+        
 </Window>

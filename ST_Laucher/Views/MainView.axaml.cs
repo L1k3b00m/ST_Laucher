@@ -8,14 +8,18 @@ using System.Collections;
 using System.Linq;
 using KMCCC.Authentication;
 using KMCCC.Launcher;
+using SquareMinecraftLauncher.Core;
 using System.Runtime.ConstrainedExecution;
 using System.Collections.Generic;
+using DynamicData;
+
 namespace ST_Laucher.Views;
 
 public partial class MainView : UserControl
 {
+
     public static IEnumerable<string> java_ver;
-    public static KMCCC.Launcher.Version[] versions;
+    public static Version[] versions;
     KMCCC.Launcher.LauncherCore core = KMCCC.Launcher.LauncherCore.Create();
     public MainView()
     {
