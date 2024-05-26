@@ -1,16 +1,16 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:reactiveUi="clr-namespace:ReactiveUI;assembly=ReactiveUI"
-             x:Class="ST_Laucher.App"
+             x:Class="ST_Lc2.App"
+             xmlns:local="using:ST_Lc2"
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
-    
+
     <Application.DataTemplates>
-        <reactiveUi:ViewLocator/>
+        <local:ViewLocator/>
     </Application.DataTemplates>
-    
+  
     <Application.Styles>
         <FluentTheme />
-        <StyleInclude Source="avares://ST_Laucher/icon.axaml" />
+        <StyleInclude Source="avares://ST_Lc2/icons.axaml"></StyleInclude>
     </Application.Styles>
 </Application>

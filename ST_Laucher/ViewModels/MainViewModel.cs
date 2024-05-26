@@ -9,5 +9,7 @@ public class MainViewModel : ViewModelBase
     public string Greeting => "Welcome to Avalonia!";
 
     public Version[] Versions => LauncherCore.Create().GetVersions().ToArray();
+    
+    
 
 }

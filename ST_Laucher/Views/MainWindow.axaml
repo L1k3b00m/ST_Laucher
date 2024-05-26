@@ -10,8 +10,9 @@
         Title="ST_Laucher"
         RequestedThemeVariant=""
         Background="Transparent"
-        TransparencyLevelHint="AcrylicBlur"
+        TransparencyLevelHint="Mica"
         ExtendClientAreaToDecorationsHint="True">
         <views:MainView />
+        <!--Background="Transparent"-->
         
 </Window>

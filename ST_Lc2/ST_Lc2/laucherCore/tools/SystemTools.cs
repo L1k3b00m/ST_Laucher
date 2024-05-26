@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ST_Laucher.laucherCore.tools
+namespace ST_Lc2.laucherCore.tools
 {
     public class SystemTools
     {
