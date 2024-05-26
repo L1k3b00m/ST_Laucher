@@ -12,7 +12,7 @@ public class ViewLocator : IDataTemplate
     {
         if (param is MainWindowViewModel) return new MainWindow();
         if (param is HomeViewModel) return new HomeView();
-        
+        if (param is ToolsViewModel) return new ToolsView();
         throw new NotImplementedException();
     }
 

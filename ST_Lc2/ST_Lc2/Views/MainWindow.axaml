@@ -3,6 +3,11 @@
         xmlns:vm="using:ST_Lc2.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+        xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions.Core"
+        xmlns:sty="using:FluentAvalonia.Styling"
+        xmlns:ui="using:FluentAvalonia.UI.Controls"
+        xmlns:uip="using:FluentAvalonia.UI.Controls.Primitives"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ST_Lc2.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -66,18 +71,67 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Grid Column="0">
-                    <Button
-                        Width="50"
-                        Height="50"
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        Command="{Binding GotoHome}">
-                        <PathIcon Data="{StaticResource home_regular}"></PathIcon>
+                <Grid Column="0" ShowGridLines="True">
+                    <!-- <ItemsControl ItemsSource="{Binding togglebuttonlist}"> -->
+                    <!--     <ItemsControl.ItemsPanel> -->
+                    <!--         <ItemsPanelTemplate> -->
+                    <!--             <StackPanel></StackPanel> -->
+                    <!--         </ItemsPanelTemplate> -->
+                    <!--     </ItemsControl.ItemsPanel> -->
+                    <!--     <ItemsControl.ItemTemplate> -->
+                    <!--         <DataTemplate> -->
+                    <!--             <ToggleButton -->
+                    <!--                 Width="50" -->
+                    <!--                 Height="50" -->
+                    <!--                 Margin="5,10,2,10" -->
+                    <!--                 Background="Transparent" -->
+                    <!--                 BorderBrush="Transparent" -->
+                    <!--                 Click="Button_OnClick" -->
+                    <!--                 Command="{Binding commod}" -->
+                    <!--                 > -->
+                    <!--                 <TextBlock -->
+                    <!--                     FontFamily="Segoe Fluent Icons" -->
+                    <!--                     Text="{Binding icon}" -->
+                    <!--                     HorizontalAlignment="Center" -->
+                    <!--                     VerticalAlignment="Center"></TextBlock> -->
+                    <!--             </ToggleButton> -->
+                    <!--         </DataTemplate> -->
+                    <!--     </ItemsControl.ItemTemplate> -->
+                    <!-- </ItemsControl> -->
+                    
+                    <!-- <ToggleButton -->
+                    <!--     Margin="5,10,2,10" -->
+                    <!--     Width="50" -->
+                    <!--     Height="50" -->
+                    <!--     Background="Transparent" -->
+                    <!--     BorderBrush="Transparent" -->
+                    <!--     Focusable="False" -->
+                    <!--     Click="Button_OnClick" -->
+                    <!--     Command="{Binding GotoHome}"> -->
+                    <!--     <PathIcon Data="{StaticResource home_regular}"></PathIcon> -->
+                    <!-- </ToggleButton> -->
+                    
+                    <ui:NavigationView PaneDisplayMode="Left" IsBackButtonVisible="False"
+                                       IsSettingsVisible="False"
+                                       IsPaneToggleButtonVisible="False"
+                                       Width="80"
+                                       Name = "NavView">
+                        <ui:NavigationView.MenuItems >
+                            <ui:NavigationViewItem Content="\HOME"></ui:NavigationViewItem>
+                        </ui:NavigationView.MenuItems>
                         
-                    </Button>
+                        <ui:Frame Name="Frame"></ui:Frame>
+                    </ui:NavigationView>
+
+
+
+
+
+
+
                 </Grid>
-                <ContentControl Grid.Column="1"
+                <ContentControl Grid.Column="1" Margin="10,10,0,0"
+                                CornerRadius="50"
                                 Content="{Binding Current}"></ContentControl>
             </Grid>
         
