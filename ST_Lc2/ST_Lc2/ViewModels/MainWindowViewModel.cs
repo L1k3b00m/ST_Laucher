@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using CommunityToolkit.Mvvm.Input;
+using FluentAvalonia.UI.Controls;
 using ReactiveUI;
 using ST_Lc2.navigatiom;
 using ST_Lc2.ViewModels;
@@ -12,7 +13,7 @@ namespace ST_Lc2.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    private ViewModelBase _current = new HomeViewModel();
+    private ViewModelBase _current ;
     
     public MainWindowViewModel()
     {
@@ -47,6 +48,8 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         Current = new ToolsViewModel();
     }
+
+
     
     public ObservableCollection<toggleButtonItem> togglebuttonlist { get; set; }
     // public ICollection<toggleButtonItem> ToggleButtonItems
@@ -54,4 +57,22 @@ public partial class MainWindowViewModel : ViewModelBase
     //     get => ToggleButtons;
     //     set => this.RaiseAndSetIfChanged(ref ToggleButtons, value);
     // }
+    public void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+    {
+        if (args.InvokedItemContainer is NavigationViewItem item)
+        {
+            if (item.Content is string content)
+            {
+                switch (content)
+                {
+                    case "Home":
+                        Current = new HomeViewModel();
+                        break;
+                    case "Tools":
+                        Current = new ToolsViewModel();
+                        break;
+                }
+            }
+        }
+    }
 }
