@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Mime;
 using Avalonia;
 using Avalonia.Controls;
@@ -6,14 +8,15 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using CommunityToolkit.Mvvm.ComponentModel;
 using FluentAvalonia.UI.Controls;
+using FluentAvalonia.UI.Navigation;
 using ST_Lc2.ViewModels;
 
 namespace ST_Lc2.Views;
 
 public partial class MainWindow : Window
 {
+    private ViewModelBase _current;
     private Stack<ToggleButton> stack = new Stack<ToggleButton>();
-    private NativeMenuItem? nativeMenu;
 
     public MainWindow()
     {
@@ -41,18 +44,28 @@ public partial class MainWindow : Window
         this.Close();
     }
 
-    private void TreeView_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    private void NavView_OnItemInvoked(object? sender, NavigationViewItemInvokedEventArgs e)
     {
-        
-        throw new System.NotImplementedException();
-    }
-
-    private void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-    {
-        if (args.InvokedItem != null)
+        if (e.InvokedItemContainer is NavigationViewItem item)
         {
+            if (item.Tag is String page)
+            {
+                switch(page)
+                {
+                   case "Home":
+                       Frame2.Navigate((typeof(HomeView)));
+                       break;
+                   case  "Tools":
+                       Frame2.Navigate((typeof(ToolsView)));
+                       break;
+                }           
+            }
             
         }
     }
-    
+
+    private void Frame2_OnNavigated(object sender, NavigationEventArgs e)
+    {
+
+    }
 }
