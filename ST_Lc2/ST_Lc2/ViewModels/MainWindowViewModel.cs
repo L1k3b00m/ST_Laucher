@@ -49,7 +49,7 @@ public partial class MainWindowViewModel : ViewModelBase
         Current = new ToolsViewModel();
     }
 
-
+    public string gett => "dsadasdasdsad";
     
     public ObservableCollection<toggleButtonItem> togglebuttonlist { get; set; }
     // public ICollection<toggleButtonItem> ToggleButtonItems

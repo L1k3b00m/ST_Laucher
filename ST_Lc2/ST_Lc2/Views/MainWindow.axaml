@@ -110,7 +110,7 @@
                     <!--     Command="{Binding GotoHome}"> -->
                     <!--     <PathIcon Data="{StaticResource home_regular}"></PathIcon> -->
                     <!-- </ToggleButton> -->
-                    
+                    <!-- Navigation panel -->
                     <ui:NavigationView PaneDisplayMode="Left" IsBackButtonVisible="False"
                                        IsSettingsVisible="False"
                                        IsPaneToggleButtonVisible="False"
@@ -136,7 +136,7 @@
                 <ContentControl Grid.Column="1" Margin="10,10,0,0"
                                 CornerRadius="50"
                                 >
-                    <ui:Frame Name="Frame2" Navigated="Frame2_OnNavigated"></ui:Frame>
+                    <ui:Frame Name="Frame2" Navigated="Frame2_OnNavigated" ></ui:Frame>
                 </ContentControl>
             </Grid>
         
