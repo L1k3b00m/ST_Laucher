@@ -12,5 +12,7 @@
     <Design.DataContext>
         <vm:ToolsViewModel></vm:ToolsViewModel>
     </Design.DataContext>
-    <TextBlock Text= "{Binding abc, FallbackValue='null'}"></TextBlock>
+        <Grid>
+        <Image Source="{Binding Image_view.Source, Mode=TwoWay}"></Image>
+        </Grid>
 </UserControl>

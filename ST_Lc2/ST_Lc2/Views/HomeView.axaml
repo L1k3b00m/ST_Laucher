@@ -13,9 +13,49 @@
         </vm:HomeViewModel>
     </Design.DataContext>
     
-    <Grid ShowGridLines="True">
-        <TextBlock Width="300" Background = "Red" Text="{Binding GTER, FallbackValue='null'}"></TextBlock>
-        <Button Background = "Transparent" BorderBrush = "Transparent" Command="{Binding ButtonAction}">名字</Button>
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="233"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Row="0">
+            <Border>
+                <Border.Background>
+                    <ImageBrush Source="../Assets/cat_and_Dog.jpg" Stretch="UniformToFill"></ImageBrush>
+                </Border.Background>
+                <TextBlock Text="宠物识别系统" VerticalAlignment="Top" Margin="36,88,0,0" FontSize="35" FontFamily="MiSans" FontWeight="ExtraBold" ></TextBlock>
+            </Border>
+        </Grid>
+        <Grid Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+          <Grid Column="0" ShowGridLines="False">
+              <Grid.RowDefinitions>
+                  <RowDefinition Height="*"></RowDefinition>
+                  <RowDefinition Height="*"></RowDefinition>
+              </Grid.RowDefinitions>
+              <Button Grid.Row="0" Background="Transparent" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" Command="{Binding buttonAction,Mode=TwoWay}" Content="选择文件并预测" FontFamily="MiSans"></Button>
+              <Border Grid.Row="1" BorderThickness="1,1,1,1" BorderBrush="Gray">
+                <Grid ShowGridLines="False">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="预测结果" HorizontalAlignment="Center" FontFamily="MiSans"></TextBlock>
+                    <TextBlock Grid.Row="1" Text="{Binding predictResult}" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="MiSans" FontSize="50" FontWeight="Bold"></TextBlock>
+                </Grid>
+                  
+              </Border>
+          </Grid>
+          <Grid Column="1">
+            <StackPanel>
+                <TextBlock Text="文件预览框" FontFamily="MiSans" HorizontalAlignment="Center"></TextBlock>
+                <Image Source="{Binding Image_view.Source,Mode=TwoWay}" Stretch="UniformToFill" VerticalAlignment="400"></Image>
+            </StackPanel>
+          </Grid>
+        </Grid>
     </Grid>
 
     

@@ -8,6 +8,7 @@
         xmlns:sty="using:FluentAvalonia.Styling"
         xmlns:ui="using:FluentAvalonia.UI.Controls"
         xmlns:uip="using:FluentAvalonia.UI.Controls.Primitives"
+        xmlns:NavItem="using:ST_Lc2.navigatiom"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="ST_Lc2.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -16,15 +17,19 @@
         BorderBrush="Transparent"
         ExtendClientAreaToDecorationsHint="True"
         Icon="/Assets/avalonia-logo.ico"
-        Title="ST_Lc2">
-
+        Title="ST_Lc2"
+        MinWidth="800"
+        MaxWidth="800"
+        >
+    
+    
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <Grid Name="MainGrid" ShowGridLines="True">
+    <Grid Name="MainGrid" ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
             <RowDefinition Height="*"/>
@@ -62,83 +67,34 @@
                 <TextBlock
                     Margin="16,0,0,0"
                     VerticalAlignment="Center"
-                    Text="WPF Gallery Preview" />
+                    FontFamily="MiSans"
+                    FontWeight="Bold"
+                    Text="宠物识别系统" />
             </StackPanel>
         </Grid>
             <Grid Row="1"
                   ShowGridLines="True">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid Column="0" ShowGridLines="True">
-                    <!-- <ItemsControl ItemsSource="{Binding togglebuttonlist}"> -->
-                    <!--     <ItemsControl.ItemsPanel> -->
-                    <!--         <ItemsPanelTemplate> -->
-                    <!--             <StackPanel></StackPanel> -->
-                    <!--         </ItemsPanelTemplate> -->
-                    <!--     </ItemsControl.ItemsPanel> -->
-                    <!--     <ItemsControl.ItemTemplate> -->
-                    <!--         <DataTemplate> -->
-                    <!--             <ToggleButton -->
-                    <!--                 Width="50" -->
-                    <!--                 Height="50" -->
-                    <!--                 Margin="5,10,2,10" -->
-                    <!--                 Background="Transparent" -->
-                    <!--                 BorderBrush="Transparent" -->
-                    <!--                 Click="Button_OnClick" -->
-                    <!--                 Command="{Binding commod}" -->
-                    <!--                 > -->
-                    <!--                 <TextBlock -->
-                    <!--                     FontFamily="Segoe Fluent Icons" -->
-                    <!--                     Text="{Binding icon}" -->
-                    <!--                     HorizontalAlignment="Center" -->
-                    <!--                     VerticalAlignment="Center"></TextBlock> -->
-                    <!--             </ToggleButton> -->
-                    <!--         </DataTemplate> -->
-                    <!--     </ItemsControl.ItemTemplate> -->
-                    <!-- </ItemsControl> -->
-                    
-                    <!-- <ToggleButton -->
-                    <!--     Margin="5,10,2,10" -->
-                    <!--     Width="50" -->
-                    <!--     Height="50" -->
-                    <!--     Background="Transparent" -->
-                    <!--     BorderBrush="Transparent" -->
-                    <!--     Focusable="False" -->
-                    <!--     Click="Button_OnClick" -->
-                    <!--     Command="{Binding GotoHome}"> -->
-                    <!--     <PathIcon Data="{StaticResource home_regular}"></PathIcon> -->
-                    <!-- </ToggleButton> -->
                     <!-- Navigation panel -->
                     <ui:NavigationView PaneDisplayMode="Left" IsBackButtonVisible="False"
                                        IsSettingsVisible="False"
                                        IsPaneToggleButtonVisible="False"
-                                       Width="80"
+                                       IsPaneOpen="True"
                                        ItemInvoked="NavView_OnItemInvoked"
-                                       Name = "NavView">
+                                       MenuItemsSource="{Binding NavigationItems}"
+                                       OpenPaneLength="90"
+                                       Name="Nav"
+                                       SelectedItem="{Binding NavigationItems[0]}"
+                                       >
+                        <ui:NavigationView.MenuItemTemplate> 
+                            <DataTemplate DataType="{x:Type NavItem:NavigationItem}">
+                                <ui:NavigationViewItem  Content="{Binding Tag}" Tag="{Binding Tag}" Width="80" Height="80">
+                                </ui:NavigationViewItem>
+                            </DataTemplate>
+                        </ui:NavigationView.MenuItemTemplate>
                         
-                        <ui:NavigationView.MenuItems >
-                            <ui:NavigationViewItem Content="Home"
-                                                    Tag="Home"
-                                                   SelectsOnInvoked="True"
-                                                   ></ui:NavigationViewItem>
-                            <ui:NavigationViewItem Content="tools"
-                                Tag="Tools"
-                                                   SelectsOnInvoked="True"
-                            ></ui:NavigationViewItem>
-                        </ui:NavigationView.MenuItems>
-                        
-                        <ui:Frame Name="Frame"></ui:Frame>
+                        <ui:Frame Name="FrameView">
+                        </ui:Frame>
                     </ui:NavigationView>
-
-                </Grid>
-                <ContentControl Grid.Column="1" Margin="10,10,0,0"
-                                CornerRadius="50"
-                                >
-                    <ui:Frame Name="Frame2" Navigated="Frame2_OnNavigated" ></ui:Frame>
-                </ContentControl>
             </Grid>
-        
     </Grid>
 </Window>

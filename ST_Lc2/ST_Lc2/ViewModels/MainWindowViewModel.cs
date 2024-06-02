@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
 using Avalonia.Data;
+using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.Input;
 using FluentAvalonia.UI.Controls;
 using ReactiveUI;
@@ -13,25 +16,37 @@ namespace ST_Lc2.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    private ViewModelBase _current ;
-    
+    public NavigationItem NavigationItem => new NavigationItem();
+    private ViewModelBase _current;
+
+    public ObservableCollection<NavigationItem> Nav_list;
     public MainWindowViewModel()
     {
-        togglebuttonlist = new ObservableCollection<toggleButtonItem>
+        
+        Nav_list = new ObservableCollection<NavigationItem>
         {
-            new toggleButtonItem
+            new NavigationItem()
             {
-                //home
-                commod = new RelayCommand(GotoHome),
-                icon = "\xE80F"
+                Tag = "Home",
+                content = "Home",
+                icon = new Image{Source = new Bitmap("../../../Assets/home_rgl.png")},
+                icon_family = "Segoe Fluent Icons"
             },
-            new toggleButtonItem
+            new NavigationItem()
             {
-                //tools
-                commod = new RelayCommand(GotoTools),
-                icon = "\xE90F"
+                Tag = "Tools",
+                content = "Tools",
+                icon = new Image{Source = new Bitmap("../../../Assets/home_rgl.png")},
+                icon_family = "Segoe Fluent Icons"
             }
         };
+
+    }
+
+    public ObservableCollection<NavigationItem> NavigationItems
+    {
+        get => Nav_list;
+        set => this.RaiseAndSetIfChanged(ref Nav_list, value);
     }
     public ViewModelBase Current   
     {
@@ -51,28 +66,12 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public string gett => "dsadasdasdsad";
     
-    public ObservableCollection<toggleButtonItem> togglebuttonlist { get; set; }
+
     // public ICollection<toggleButtonItem> ToggleButtonItems
     // {
     //     get => ToggleButtons;
     //     set => this.RaiseAndSetIfChanged(ref ToggleButtons, value);
     // }
-    public void NavView_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
-    {
-        if (args.InvokedItemContainer is NavigationViewItem item)
-        {
-            if (item.Content is string content)
-            {
-                switch (content)
-                {
-                    case "Home":
-                        Current = new HomeViewModel();
-                        break;
-                    case "Tools":
-                        Current = new ToolsViewModel();
-                        break;
-                }
-            }
-        }
-    }
+
+
 }

@@ -1,4 +1,5 @@
-﻿using Avalonia;
+﻿using System.Net.Mime;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using ST_Lc2.ViewModels;
@@ -11,5 +12,6 @@ public partial class ToolsView : UserControl
     {
         InitializeComponent();
         DataContext = new ToolsViewModel();
+
     }
 }

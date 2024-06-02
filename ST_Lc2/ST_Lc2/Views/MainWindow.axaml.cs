@@ -5,6 +5,7 @@ using System.Net.Mime;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using CommunityToolkit.Mvvm.ComponentModel;
 using FluentAvalonia.UI.Controls;
@@ -21,6 +22,8 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        DataContext = new MainWindowViewModel();
+        FrameView.Navigate((typeof(HomeView)));
     }
 
     public void MinimizeWindow(object? sender, RoutedEventArgs e)
@@ -53,10 +56,10 @@ public partial class MainWindow : Window
                 switch(page)
                 {
                    case "Home":
-                       Frame2.Navigate((typeof(HomeView)));
+                       FrameView.Navigate((typeof(HomeView)));
                        break;
                    case  "Tools":
-                       Frame2.Navigate((typeof(ToolsView)));
+                       FrameView.Navigate((typeof(ToolsView)));
                        break;
                 }           
             }
@@ -68,4 +71,6 @@ public partial class MainWindow : Window
     {
 
     }
+
+
 }
